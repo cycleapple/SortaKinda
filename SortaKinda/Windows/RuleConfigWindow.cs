@@ -3,7 +3,6 @@ using System.Drawing;
 using System.Numerics;
 using Dalamud.Bindings.ImGui;
 using Dalamud.Interface;
-using Dalamud.Interface.Style;
 using Dalamud.Interface.Utility;
 using Dalamud.Interface.Utility.Raii;
 using SortaKinda.Classes;
@@ -36,9 +35,6 @@ public class RuleConfigWindow : Window {
         IsOpen = true;
     }
 
-    public override void PreDraw() 
-        => StyleModelV1.DalamudStandard.Push();
-
     protected override void DrawContents() {
         DrawHeader();
 
@@ -61,9 +57,6 @@ public class RuleConfigWindow : Window {
             System.SortController.SaveConfig();
         }
     }
-
-    public override void PostDraw() 
-        => StyleModelV1.DalamudStandard.Pop();
 
     private void DrawHeader() {
         DrawColorEdit();

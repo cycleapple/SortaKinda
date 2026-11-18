@@ -1,7 +1,6 @@
 ﻿using System.Numerics;
 using Dalamud.Bindings.ImGui;
 using Dalamud.Interface;
-using Dalamud.Interface.Style;
 using Dalamud.Interface.Utility.Raii;
 using KamiLib.Classes;
 using KamiLib.CommandManager;
@@ -44,16 +43,10 @@ public class ConfigurationWindow : Window {
     public override bool DrawConditions()
         => Service.ClientState is { IsLoggedIn: true };
 
-    public override void PreDraw() 
-        => StyleModelV1.DalamudStandard.Push();
-
     protected override void DrawContents() {
         tabBar.Draw();
         areaPaintController.Draw();
     }
-
-    public override void PostDraw() 
-        => StyleModelV1.DalamudStandard.Pop();
 
     private void OpenConfigWindow(params string[] args) {
         switch (Service.ClientState) {
